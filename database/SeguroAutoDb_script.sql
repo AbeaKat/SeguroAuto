@@ -15,27 +15,27 @@ GO
 USE SeguroAutoDb;
 GO
 
-IF OBJECT_ID('dbo.PolizaCoberturas', 'U') IS NOT NULL
-    DROP TABLE dbo.PolizaCoberturas;
+IF OBJECT_ID('dbo.Tbl_PolizaCoberturas', 'U') IS NOT NULL
+    DROP TABLE dbo.Tbl_PolizaCoberturas;
 GO
 
-IF OBJECT_ID('dbo.Polizas', 'U') IS NOT NULL
-    DROP TABLE dbo.Polizas;
+IF OBJECT_ID('dbo.Tbl_Polizas', 'U') IS NOT NULL
+    DROP TABLE dbo.Tbl_Polizas;
 GO
 
-IF OBJECT_ID('dbo.Coberturas', 'U') IS NOT NULL
-    DROP TABLE dbo.Coberturas;
+IF OBJECT_ID('dbo.Tbl_Coberturas', 'U') IS NOT NULL
+    DROP TABLE dbo.Tbl_Coberturas;
 GO
 
-IF OBJECT_ID('dbo.Vehiculos', 'U') IS NOT NULL
-    DROP TABLE dbo.Vehiculos;
+IF OBJECT_ID('dbo.Tbl_Vehiculos', 'U') IS NOT NULL
+    DROP TABLE dbo.Tbl_Vehiculos;
 GO
 
-IF OBJECT_ID('dbo.Clientes', 'U') IS NOT NULL
-    DROP TABLE dbo.Clientes;
+IF OBJECT_ID('dbo.Tbl_Clientes', 'U') IS NOT NULL
+    DROP TABLE dbo.Tbl_Clientes;
 GO
 
-CREATE TABLE dbo.Clientes
+CREATE TABLE dbo.Tbl_Clientes
 (
     Id INT IDENTITY(1,1) NOT NULL,
     Nombre NVARCHAR(150) NOT NULL,
@@ -51,7 +51,7 @@ CREATE TABLE dbo.Clientes
 );
 GO
 
-CREATE TABLE dbo.Vehiculos
+CREATE TABLE dbo.Tbl_Vehiculos
 (
     Id INT IDENTITY(1,1) NOT NULL,
     Placa NVARCHAR(20) NOT NULL,
@@ -69,7 +69,7 @@ CREATE TABLE dbo.Vehiculos
 );
 GO
 
-CREATE TABLE dbo.Coberturas
+CREATE TABLE dbo.Tbl_Coberturas
 (
     Id INT IDENTITY(1,1) NOT NULL,
     Nombre NVARCHAR(100) NOT NULL,
@@ -84,7 +84,7 @@ CREATE TABLE dbo.Coberturas
 );
 GO
 
-CREATE TABLE dbo.Polizas
+CREATE TABLE dbo.Tbl_Polizas
 (
     Id INT IDENTITY(1,1) NOT NULL,
     NumeroPoliza NVARCHAR(30) NOT NULL,
@@ -97,15 +97,15 @@ CREATE TABLE dbo.Polizas
 
     CONSTRAINT PK_Polizas PRIMARY KEY (Id),
     CONSTRAINT UQ_Polizas_NumeroPoliza UNIQUE (NumeroPoliza),
-    CONSTRAINT FK_Polizas_Clientes FOREIGN KEY (ClienteId) REFERENCES dbo.Clientes(Id),
-    CONSTRAINT FK_Polizas_Vehiculos FOREIGN KEY (VehiculoId) REFERENCES dbo.Vehiculos(Id),
+    CONSTRAINT FK_Polizas_Clientes FOREIGN KEY (ClienteId) REFERENCES dbo.Tbl_Clientes(Id),
+    CONSTRAINT FK_Polizas_Vehiculos FOREIGN KEY (VehiculoId) REFERENCES dbo.Tbl_Vehiculos(Id),
     CONSTRAINT CK_Polizas_SumaAsegurada CHECK (SumaAsegurada > 0),
     CONSTRAINT CK_Polizas_PrimaTotal CHECK (PrimaTotal >= 0),
     CONSTRAINT CK_Polizas_Estado CHECK (Estado IN ('Emitida', 'Cancelada', 'Vencida'))
 );
 GO
 
-CREATE TABLE dbo.PolizaCoberturas
+CREATE TABLE dbo.Tbl_PolizaCoberturas
 (
     Id INT IDENTITY(1,1) NOT NULL,
     PolizaId INT NOT NULL,
@@ -113,32 +113,32 @@ CREATE TABLE dbo.PolizaCoberturas
     MontoAplicado DECIMAL(18,2) NOT NULL,
 
     CONSTRAINT PK_PolizaCoberturas PRIMARY KEY (Id),
-    CONSTRAINT FK_PolizaCoberturas_Polizas FOREIGN KEY (PolizaId) REFERENCES dbo.Polizas(Id),
-    CONSTRAINT FK_PolizaCoberturas_Coberturas FOREIGN KEY (CoberturaId) REFERENCES dbo.Coberturas(Id),
+    CONSTRAINT FK_PolizaCoberturas_Polizas FOREIGN KEY (PolizaId) REFERENCES dbo.Tbl_Polizas(Id),
+    CONSTRAINT FK_PolizaCoberturas_Coberturas FOREIGN KEY (CoberturaId) REFERENCES dbo.Tbl_Coberturas(Id),
     CONSTRAINT UQ_PolizaCoberturas_Poliza_Cobertura UNIQUE (PolizaId, CoberturaId),
     CONSTRAINT CK_PolizaCoberturas_MontoAplicado CHECK (MontoAplicado > 0)
 );
 GO
 
-CREATE INDEX IX_Polizas_ClienteId ON dbo.Polizas(ClienteId);
+CREATE INDEX IX_Polizas_ClienteId ON dbo.Tbl_Polizas(ClienteId);
 GO
-CREATE INDEX IX_Polizas_VehiculoId ON dbo.Polizas(VehiculoId);
+CREATE INDEX IX_Polizas_VehiculoId ON dbo.Tbl_Polizas(VehiculoId);
 GO
-CREATE INDEX IX_Polizas_FechaEmision ON dbo.Polizas(FechaEmision);
+CREATE INDEX IX_Polizas_FechaEmision ON dbo.Tbl_Polizas(FechaEmision);
 GO
-CREATE INDEX IX_PolizaCoberturas_PolizaId ON dbo.PolizaCoberturas(PolizaId);
+CREATE INDEX IX_PolizaCoberturas_PolizaId ON dbo.Tbl_PolizaCoberturas(PolizaId);
 GO
-CREATE INDEX IX_PolizaCoberturas_CoberturaId ON dbo.PolizaCoberturas(CoberturaId);
+CREATE INDEX IX_PolizaCoberturas_CoberturaId ON dbo.Tbl_PolizaCoberturas(CoberturaId);
 GO
 
-INSERT INTO dbo.Clientes (Nombre, Identificacion, Correo, Telefono)
+INSERT INTO dbo.Tbl_Clientes (Nombre, Identificacion, Correo, Telefono)
 VALUES
 ('Juan Pérez', '001-010190-0001A', 'juan.perez@email.com', '8888-1111'),
 ('María López', '001-020292-0002B', 'maria.lopez@email.com', '8888-2222'),
 ('Carlos Ramírez', '001-030393-0003C', 'carlos.ramirez@email.com', '8888-3333');
 GO
 
-INSERT INTO dbo.Coberturas (Nombre, Descripcion, MontoCobertura)
+INSERT INTO dbo.Tbl_Coberturas (Nombre, Descripcion, MontoCobertura)
 VALUES
 ('Robo', 'Cobertura ante robo total o parcial del vehículo.', 150.00),
 ('Choque', 'Cobertura ante daños por colisión.', 250.00),
@@ -147,6 +147,6 @@ VALUES
 ('Asistencia Vial', 'Servicio de grúa y asistencia en carretera.', 50.00);
 GO
 
-SELECT * FROM dbo.Clientes;
-SELECT * FROM dbo.Coberturas;
+SELECT * FROM dbo.Tbl_Clientes;
+SELECT * FROM dbo.Tbl_Coberturas;
 GO
