@@ -15,7 +15,6 @@ Prototipo funcional para emisión de pólizas de automóviles.
 - Vite
 - TypeScript
 - Tailwind CSS
-- shadcn/ui opcional para componentes visuales
 
 ## Estructura
 
@@ -68,6 +67,7 @@ cd backend/Insurance.Api
 dotnet restore
 dotnet run
 ```
+IMPORTANTE: El proyecto corre con .NET 10 SDK
 
 Swagger quedará disponible normalmente en:
 
@@ -91,6 +91,7 @@ cd frontend/insurance-web
 npm install
 npm run dev
 ```
+IMPORTANTE: Utilizar node.js  20.19 o superior puesto que VITE 7 requiere una version moderna para ser ejecutado.
 
 ## Endpoints principales
 
@@ -118,4 +119,11 @@ POST   /api/polizas/emitir
 }
 ```
 
-La `PrimaTotal` se calcula en el servidor usando la suma de los montos de las coberturas seleccionadas.
+
+## Postman
+IMPORTAR DESDE 
+
+``` docs/
+    postman/
+           SeguroAuto.postman_collection.json
+```
