@@ -1,0 +1,52 @@
+{
+  "info": {
+    "name": "Seguro Auto API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Clientes - Get All",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/clientes"
+      }
+    },
+    {
+      "name": "Coberturas - Get All",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/coberturas"
+      }
+    },
+    {
+      "name": "Polizas - Get All",
+      "request": {
+        "method": "GET",
+        "url": "{{baseUrl}}/api/polizas"
+      }
+    },
+    {
+      "name": "Polizas - Emitir",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{baseUrl}}/api/polizas/emitir",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"clienteId\": 1,\n  \"vehiculo\": {\n    \"placa\": \"M123456\",\n    \"marca\": \"Toyota\",\n    \"modelo\": \"Corolla\",\n    \"anio\": 2022,\n    \"valorComercial\": 15000\n  },\n  \"coberturasIds\": [1, 2, 3]\n}"
+        }
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://localhost:7001"
+    }
+  ]
+}
