@@ -106,22 +106,19 @@ Abrir PowerShell y ubicarse en la carpeta del backend.
 
 Ejemplo:
 
-powershell
-```text
+```powershell
 cd "C:\Users\TU_USUARIO\Documents\SeguroAuto\backend\Insurance.Api"
 ```
 
 Restaurar los paquetes NuGet:
 
-powershell
-```
+```powershell
 dotnet restore
 ```
 
 Ejecutar la API:
 
-powershell
-```
+```powershell
 dotnet run
 ```
 
@@ -176,10 +173,10 @@ GET /api/coberturas
 Si ambos devuelven datos, la conexión a la base de datos está funcionando.
 
 Para emitir una póliza, probar:
-
+```
 http
 POST /api/polizas/emitir
-
+```
 
 Body de ejemplo:
 ```text
@@ -199,8 +196,9 @@ json
 
 Respuesta esperada:
 
-text
+```text
 201 Created
+```
 
 ## Ejecutar frontend
 
@@ -210,27 +208,27 @@ No cerrar la terminal donde está corriendo el backend.
 
 Entrar a la carpeta del frontend, ejemplo:
 
-powershell
+```powershell
 cd "C:\Users\TU_USUARIO\Documents\SeguroAuto\frontend\insurance-web"
-
+```
 
 Instalar las dependencias del frontend:
 
-powershell
+```powershell
 npm ci
-
+```
 
 Si por alguna razón npm ci falla porque no existe package-lock.json, usar:
 
-powershell
+```powershell
 npm install
-
+```
 
 Ejecutar el frontend:
 
-powershell
+```powershell
 npm run dev
-
+```
 
 Abrir en el navegador:
 
@@ -241,30 +239,30 @@ http://localhost:5173
 
 El proyecto incluye una colección básica de Postman en:
 
-text
+```text
 docs/postman/SeguroAuto.postman_collection.json
-
+```
 
 Para importarla:
 
-text
+```text
 Postman > Import > Files > Seleccionar SeguroAuto.postman_collection.json
-
+```
 
 Configurar la variable:
 
 Requests principales:
-
+```
 http
 GET  {{baseUrl}}/api/clientes
 GET  {{baseUrl}}/api/coberturas
 GET  {{baseUrl}}/api/polizas
 GET  {{baseUrl}}/api/polizas/{{polizaId}}
 POST {{baseUrl}}/api/polizas/emitir
-
+```
 
 Body para emitir póliza:
-
+```
 json
 {
   "clienteId": 1,
@@ -277,3 +275,6 @@ json
   },
   "coberturasIds": [1, 2, 3]
 }
+```
+
+## Desarrolado por KATHERINE ABEA PALACIOS.
