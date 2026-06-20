@@ -1,6 +1,6 @@
 # Sistema de Emisión de Seguros de Auto
 
-Prototipo funcional para emisión de pólizas de automóviles.
+Prueba emisión de pólizas de automóviles.
 
 ## Stack propuesto
 
