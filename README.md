@@ -112,13 +112,15 @@ cd "C:\Users\TU_USUARIO\Documents\SeguroAuto\backend\Insurance.Api"
 
 Restaurar los paquetes NuGet:
 
-```powershell
+```
+powershell
 dotnet restore
 ```
 
 Ejecutar la API:
 
-```powershell
+```
+powershell
 dotnet run
 ```
 
@@ -222,13 +224,15 @@ npm ci
 
 Si por alguna razón npm ci falla porque no existe package-lock.json, usar:
 
-```powershell
+```
+powershell
 npm install
 ```
 
 Ejecutar el frontend:
 
-```powershell
+```
+powershell
 npm run dev
 ```
 
