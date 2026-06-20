@@ -146,29 +146,31 @@ http://localhost:5001/swagger
 Swagger permite probar los endpoints de la API desde el navegador.
 
 Endpoints principales:
-
+```
 http
 GET    /api/clientes
 GET    /api/coberturas
 GET    /api/polizas
 GET    /api/polizas/{id}
 POST   /api/polizas/emitir
-
+```
 ---
 
 ## Probar la API desde Swagger
 
 Primero probar:
 
+```
 http
 GET /api/clientes
-
+```
 
 Luego:
 
+```
 http
 GET /api/coberturas
-
+```
 
 Si ambos devuelven datos, la conexión a la base de datos está funcionando.
 
@@ -232,9 +234,9 @@ npm run dev
 
 Abrir en el navegador:
 
-text
+```text
 http://localhost:5173
-
+```
 ## Postman
 
 El proyecto incluye una colección básica de Postman en:
